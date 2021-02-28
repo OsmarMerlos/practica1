@@ -1,9 +1,7 @@
 import mongoose from "../connection/connect.js";
 import modelenum from "../utils/enumModel.js";
-//import RolesModel from "./rolesModel.js";
 class todoModel{
     constructor(){
-        //var roles = new RolesModel();
         this.Schema = mongoose.Schema;
         this.todoSchema = new this.Schema({
             name: String,
@@ -21,7 +19,6 @@ class todoModel{
             this.mymodel = modelenum["todos"];
         }
 
-        //this.mymodel = mongoose.model("restos",this.restSchema);
     }
 
     createtodo(name, description, date, hour, done){
@@ -33,7 +30,6 @@ class todoModel{
                 done,
             };
             var newDo = new this.mymodel(DO);
-            //aqui viene la validacion:
             var error = newDo.validateSync();
             return new Promise((resolve,reject)=>{
                 if(error){
@@ -41,7 +37,7 @@ class todoModel{
                     return;
                }
                 newDo.save().then((docs)=>{
-                    console.log("Homework register successful");
+                    console.log("Homework TODO register successful");
                     resolve(docs);
                 });
             });

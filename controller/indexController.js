@@ -5,13 +5,11 @@ var USER = new UserModel();
 var jsonwebtoken = new JsonWebTokenManagement();
 class IndexController {
   constructor() {}
-  //services
   index(request, response) {
     response.status(200).json({ msn: "Api Test v. 2.0" });
   }
   async login(request, response) {
     const body = request.body;
-    //Validacion.
     let filter = { email: body.email, password: Sha1(body.password) };
     let list = await USER.getUsers(filter);
     console.log(list);

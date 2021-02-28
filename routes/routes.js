@@ -44,7 +44,7 @@ router.delete("/roles/:id", rolesController.deleteRol);
 Implemente 
 */
 router.get("/todo", todoController.getTodo);
-router.post("/todo", todoController.createTodo); /**usa los metodos clases de RestController createResto */
+router.post("/todo", todoController.createTodo); 
 router.put("/todo/:id", todoController.updateTodo);
 router.delete("/todo/:id", todoController.deleteTodo);
 

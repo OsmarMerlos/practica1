@@ -1,20 +1,17 @@
 
 import todoModel from "../models/ToDoModel.js";
-
-var TODO = new todoModel(); /*solo una instancia*/
+var TODO = new todoModel(); 
 class TodoController{
     constructor(){}
-    //services
     async createTodo(request,response){
         var data = request.body;
 
-        var result = await TODO.createtodo( /*esto hace referencia a la class de RestModel*/
+        var result = await TODO.createtodo( 
             data.name,
             data.description,
             data.date,
             data.hour,
             data.done,
-            //data.map,
         );
         response.status(200).json(result);
     }
