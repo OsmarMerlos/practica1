@@ -6,7 +6,6 @@ var roles = new RolesModel();
 var USER = new UserModel();
 class UserController {
   constructor() {}
-  //services
   async createUser(request, response) {
     var data = request.body;
     if (!USER.checkEmaildb(data.email)) {
@@ -63,7 +62,7 @@ class UserController {
       return;
     }
     if (!empty(req.files)) {
-      //existen archivos en la peticion request
+
       var files = req.files;
       var file = files.avatar;
       var date = new Date();
@@ -85,15 +84,11 @@ class UserController {
       obj["default"] = true;
       var r = await USER.updateAvatar(id, obj);
       res.status(200).json({ serverResponse: r });
-      //Upload Images Work
     }
   }
   async getAvatar(req, res) {
     //En caso de un servidor
     var name = req.params.name;
-    /*var name = req.params.name;
-    res.sendFile("/opt/app/files/" + name);*/
-    // REvisar la base de datos
     var filtro = await USER.findAvatar(name);
     if (filtro.length == 1) {
       res.sendFile(filtro[0].directorypath);
